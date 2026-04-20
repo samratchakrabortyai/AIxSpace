@@ -826,17 +826,25 @@
         btn.href = info.pdf;
         btn.addEventListener('click', function() {
           setTimeout(function() {
-            const deadline = deadlineDate();
-            const subject = encodeURIComponent('Space\u00D7AI Application \u2014 ' + info.track + ' \u2014 ' + name);
-            const body = encodeURIComponent(
-              'Hi,\n\nI am confirming my application to Space\u00D7AI for the ' + info.track + ' track.\n\n' +
-              'I have downloaded my task PDF and will submit by ' + deadline + '.\n\n' +
-              'If I need more time, I will reach out before the deadline.\n\n' +
-              'Name: ' + name + '\nEmail: ' + email
-            );
-            window.location.href = 'mailto:?subject=' + subject + '&body=' + body;
-          }, 800);
-        });
+           const deadline = deadlineDate();
+          
+          // Define To and CC email addresses
+          const toEmail = 'chiamanna@yahoo.com';
+          const ccEmails = 'alizayfatima1508@gmail.com,thta040120@gmail.com,sgacprojectairiskiac25lead@gmail.com';
+          
+          const subject = encodeURIComponent('Space\u00D7AI Application \u2014 ' + info.track + ' \u2014 ' + name);
+          const body = encodeURIComponent(
+            'Hi,\n\nI am confirming my application to Space\u00D7AI for the ' + info.track + ' track.\n\n' +
+            'I have downloaded my task PDF and will submit by ' + deadline + '.\n\n' +
+            'If I need more time, I will reach out before the deadline.\n\n' +
+            'Please feel free to ask if you have any doubts.\n\n' +
+            'Name: ' + name + '\nEmail: ' + email
+          );
+          
+          // Construct the final mailto URL
+          window.location.href = 'mailto:' + toEmail + '?cc=' + ccEmails + '&subject=' + subject + '&body=' + body;
+        }, 800);
+      });
       } else {
         document.getElementById('taskDownloadBtn').style.display = 'none';
       }
